@@ -1,0 +1,39 @@
+<!--pages/basics/home/home.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{false}}">
+  <!-- <view slot="backText">返回</view> -->
+  <view slot="content">智能垃圾分类</view>
+</cu-custom>
+<view class="cu-bar bg-white search fixed" style="top:60px;">
+  <view class="action" bindtap="toLocation">
+    <text class="cuIcon-location mx"></text>
+    {{location}}
+  </view>
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入搜索的关键词" disabled="disabled" confirm-type="search" bindtap="toSearchGarbage"></input>
+    <text class="cuIcon-camera mx" bindtap="toCamera"></text>
+    <text class="cuIcon-voicefill mx" bindtap="toSearchGarbage"></text>
+  </view>
+</view>
+<!-- <view class="cu-bar bg-white search fixed" style="top:64px">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input placeholder="输入搜索的关键词" disabled="disabled" type="text" selection-start="-1" selection-end="-1" cursor="-1"></input>
+    <text class="cuIcon-camera mx"></text>
+    <text class="cuIcon-voicefill mx"></text>
+  </view>
+</view> -->
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{garbageTypes}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+      {{item.name}}
+    </view>
+  </view>
+</scroll-view>
+<view class="flex  p-xs margin-bottom-sm mb-sm">
+  <view class="flex-sub padding-sm margin-xs radius" wx:for="{{garbageTypes}}" data-id="{{index}}" wx:if="{{index==TabCur}}">{{item.description}}</view>
+</view>
+<view class="flex  p-xs margin-bottom-sm mb-sm" wx:for="{{garbageList}}">
+  <view class="flex-sub padding-sm margin-xs">{{item.name}}</view>
+</view>
+

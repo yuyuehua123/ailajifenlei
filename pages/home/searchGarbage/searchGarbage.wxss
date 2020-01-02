@@ -1,0 +1,17 @@
+/* pages/home/searchGarbage/searchGarbage.wxss */
+page {
+  padding-top: 100rpx;
+}
+.voice{
+  position: absolute;
+  bottom: 2rpx;
+  left: 50%;
+  width: 200rpx;
+  height: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  border: 1px #d0d0d0 solid;
+  background-color: #d0d0d0;
+  margin-left: -100rpx;
+}

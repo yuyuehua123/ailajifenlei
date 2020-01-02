@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">智能垃圾分类</view>
+</cu-custom>
+<home wx:if="{{PageCur=='home'}}"></home>
+<rule wx:if="{{PageCur=='rule'}}"></rule>
+<mine wx:if="{{PageCur=='mine'}}"></mine>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action" bindtap="NavChange" data-cur="home">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/basics{{PageCur=='home'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='home'?'text-green':'text-gray'}}">首页</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="rule">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/component{{PageCur=='rule'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='rule'?'text-green':'text-gray'}}">处罚</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="mine">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/about{{PageCur=='mine'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='mine'?'text-green':'text-gray'}}">我的</view>
+  </view>
+</view>

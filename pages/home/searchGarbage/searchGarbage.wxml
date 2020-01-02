@@ -1,0 +1,19 @@
+<!--pages/home/searchGarbage/searchGarbage.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">智能垃圾分类</view>
+</cu-custom>
+<view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入搜索的关键词" focus="true" bindfocus="inputFocus" bindblur="inputBlur" value="{{content}}" confirm-type="search"></input>
+    <text class="cuIcon-camera"></text>
+    <text class="cuIcon-voicefill"></text>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-gradual-green shadow-blur" style="width:180rpx;padding:10rpx;" bindtap="toIndex">取消</button>
+  </view>
+</view>
+<view class="voice" bindtouchstart="start_say" bindtouchend="end_say">
+  语音
+</view>

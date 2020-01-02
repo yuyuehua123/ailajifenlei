@@ -1,0 +1,12 @@
+/* pages/basics/home/home.wxss */
+.m-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.m-location{
+  flex: 1;
+}
+.m-search{
+  flex: 5
+}
