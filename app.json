@@ -1,13 +1,44 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/login/login",
     "pages/home/home/home",
     "pages/rule/home/home",
     "pages/mine/home/home",
     "pages/location/location",
     "pages/home/camera/camera",
-    "pages/home/searchGarbage/searchGarbage"
+    "pages/home/searchGarbage/searchGarbage",
+    "pages/mine/sign/sign"
   ],
+  "tabBar": {
+    "selected": 0,
+    "color": "#000000",
+    "selectedColor": "#fa8582",
+    "borderStyle": "white",
+    "font-size": "24rpx",
+    "list": [
+      {
+        "selectedIconPath": "images/tabbar/basics_cur.png",
+        "iconPath": "images/tabbar/basics.png",
+        "pagePath": "pages/home/home/home",
+        "text": "首页",
+        "index": 0
+      },
+      {
+        "selectedIconPath": "images/tabbar/component_cur.png",
+        "iconPath": "images/tabbar/component.png",
+        "pagePath": "pages/rule/home/home",
+        "text": "处罚",
+        "index": 1
+      },
+      {
+        "selectedIconPath": "images/tabbar/about_cur.png",
+        "iconPath": "images/tabbar/about.png",
+        "pagePath": "pages/mine/home/home",
+        "text": "我的",
+        "index": 2
+      }
+    ]
+  },
   "plugins": {
     "WechatSI": {
       "version": "0.3.3",

@@ -1,2 +1,6 @@
 <!--pages/rule/home/home.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{false}}">
+  <!-- <view slot="backText">返回</view> -->
+  <view slot="content">智能垃圾分类</view>
+</cu-custom>
 <text>pages/rule/home/home.wxml</text>

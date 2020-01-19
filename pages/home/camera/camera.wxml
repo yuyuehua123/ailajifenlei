@@ -3,9 +3,9 @@
   <view slot="backText">返回</view>
   <view slot="content">智能垃圾分类</view>
 </cu-custom>
-<!-- <view class="camera" hidden="{{!isActive}}">
+<view class="camera" hidden="{{!isActive}}" style="height:{{lineHeight}}px">
   <camera class="camera" frame="large"></camera>
-  <button class="record" bindtap="record">拍摄</button>
+  <button class="record" type="primary" bindtap="record">拍摄</button>
 </view>
 <view class="garbageResult" hidden="{{isActive}}">
   <image class="result" src="{{tempImagePath}}" hidden="{{hasResult}}"></image>
@@ -19,18 +19,18 @@
     </view>
     <view>{{imageGarbage["result"]["garbage_info"][0]["ps"]}}</view>
   </view>
-</view> -->
-<view class="padding" style="text-align:center;">
+</view>
+<!-- <view class="padding" style="text-align:center;">
   <view style="margin-top:80rpx;">
     <image style="width:60px;height:60px;border-radius:10px;" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big81005.jpg"></image>
   </view>
   <view style="margin-top:100rpx;">
     <text>键盘     属于</text>
-    <view style="font-size:40rpx">可回收物</view>
+    <view style="font-size:40rpx;">可回收物</view>
   </view>
   <view style="margin-top:40rpx;">投放建议：投放至可回收物收集容器或者回收设施，也可以交予再生资源回收经营者</view>
   <view style="margin-top:60rpx;">
     <text class="cuIcon-writefill text-cyan"></text>
     <text class="text-grey">识别不对点我更正</text>
   </view>
-</view>
+</view> -->

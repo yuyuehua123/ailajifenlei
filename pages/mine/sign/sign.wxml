@@ -1,0 +1,7 @@
+<!--pages/mine/sign/sign.wxml-->
+<view class="sign-new">
+  <view class="in">
+    <view>
+    </view>
+  </view>
+</view>

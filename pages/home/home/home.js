@@ -8,7 +8,9 @@ Page({
   data: {
     TabCur: 0,
     scrollLeft: 0,
-    location:'北京',
+    garbageOneId:0,
+    cityName:"",
+    cityCode:"",
     garbageTypes: [
       {
         id: 0,
@@ -47,8 +49,13 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      location: app.globalData.location
-    })
+      cityName: app.globalData.cityName,
+      cityCode: app.globalData.cityCode
+    });
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+    this.getGarbageTypes()
   },
 
   /**
@@ -64,7 +71,7 @@ Page({
   onShow: function (options) {
     this.setData({
       location: app.globalData.location
-    })
+    });
   },
 
   /**
@@ -78,7 +85,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -98,14 +105,29 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    if(res.from === 'button'){
 
+    }
+    return {
+      title:'分享',
+      path:'/pages/home/home/home?id=123',
+      success:function(res){
+        console.log(res)
+      }
+    }
   },
   tabSelect(e) {
+    var that = this;
+    console.log(e.currentTarget.dataset.index);
     this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      TabCur: e.currentTarget.dataset.index,
+      scrollLeft: (e.currentTarget.dataset.index - 1) * 60
+    });
+    that.setData({
+      garbageOneId: e.currentTarget.dataset.id
     })
+    that.getGarbageList(that.data.cityCode, that.data.garbageOneId);
   },
   toLocation(){
     let url = "/pages/location/location?location="+this.data.location;
@@ -124,5 +146,63 @@ Page({
     wx.navigateTo({
       url: url
     })
-  }
+  },
+  /**
+   * 根据城市code获取垃圾分类
+   */
+  getGarbageTypes(){
+    var that = this;
+    var url = app.globalData.requestUrl + '/http/city/listCate';
+    console.log(app.globalData.requestUrl,that.data.cityCode)
+    wx.request({
+      url: url,
+      data: { cityCode: that.data.cityCode},
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        if(res.data.data){
+          that.setData({
+            garbageTypes:res.data.data,
+            garbageOneId:res.data.data[0].id
+          });
+          that.getGarbageList(that.data.cityCode, that.data.garbageOneId);
+        }
+        console.log(res)
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  /**
+   * 根据城市编码和垃圾类别查询垃圾列表
+   */
+  getGarbageList(code, garbageOneId){
+    console.log(code,garbageOneId)
+    var that = this;
+    var url = app.globalData.requestUrl + '/http/city/listGarbage';
+    wx.request({
+      url: url,
+      data: {
+        cityCode:code,
+        garbageOneId: garbageOneId
+      },
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        console.log(res)
+        if(res.data.data){
+          that.setData({
+            garbageList: res.data.data
+          })
+        }
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+
 })

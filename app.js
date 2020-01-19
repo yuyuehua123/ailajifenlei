@@ -1,6 +1,6 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function (options) {
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
@@ -12,10 +12,22 @@ App({
           this.globalData.CustomBar = e.statusBarHeight + 50;
         }
       }
-    })
+    });
+    var shareTicket = options.shareTicket;
+    console.log(options)
+    if (shareTicket) {
+      wx.getShareInfo({
+        shareTicket: shareTicket,
+        success: function (res) {
+          console.log(res)
+        }
+      })
+    }
   },
   globalData: {
-    location:"北京",
+    cityName:"上海",
+    cityCode:'310100',
+    requestUrl:'http://121.36.50.36:9090',
     ColorList: [{
       title: '嫣红',
       name: 'red',

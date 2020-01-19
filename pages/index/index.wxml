@@ -3,7 +3,7 @@
   <view slot="backText">返回</view>
   <view slot="content">智能垃圾分类</view>
 </cu-custom>
-<home wx:if="{{PageCur=='home'}}"></home>
+<home wx:if="{{PageCur=='home'}}" location='{{location}}'></home>
 <rule wx:if="{{PageCur=='rule'}}"></rule>
 <mine wx:if="{{PageCur=='mine'}}"></mine>
 <view class="cu-bar tabbar bg-white shadow foot">

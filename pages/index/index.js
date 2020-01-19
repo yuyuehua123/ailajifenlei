@@ -4,7 +4,14 @@ const app = getApp()
 
 Page({
   data: {
-    PageCur: 'home'
+    PageCur: 'home',
+    location:''
+  },
+  onLoad(){
+    this.setData({
+      location:app.globalData.location
+    })
+    console.log(this.data.location)
   },
   NavChange(e) {
     this.setData({

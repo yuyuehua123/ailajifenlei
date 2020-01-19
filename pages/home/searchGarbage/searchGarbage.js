@@ -142,5 +142,18 @@ Page({
     })
     //语音结束
     manager.stop();
+  },
+  getGarbageType(){
+    wx.request({
+      url: '',
+      data: '',
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 })

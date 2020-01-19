@@ -30,6 +30,7 @@ Page({
     }],
     tabIndex: 0,
     cityName: "", //获取选中的城市名
+    cityCode:"",
     pageName: "",
     "hidden": true,
     lineHeight: "",
@@ -41,26 +42,26 @@ Page({
       cityName: decodeURIComponent(options.cityName),
       pageName: options.pageName
     });
-    this.geocoder()
-    this.getCityList()
+    this.geocoder();
+    this.getCityList();
   },
   onShow(options) {
 
   },
   onReady: function (e) {
-    var cityChild = city.City[0];
-    var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        lineHeight = (res.windowHeight - 290) / 23;
-        console.log(res.windowHeight - 160)
-        that.setData({
-          city: cityChild,
-          winHeight: res.windowHeight,
-          lineHeight: lineHeight
-        })
-      }
-    })
+    // var cityChild = city.City[0];
+    // var that = this;
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     lineHeight = (res.windowHeight - 290) / 23;
+    //     console.log(res.windowHeight - 160)
+    //     that.setData({
+    //       city: cityChild,
+    //       winHeight: res.windowHeight,
+    //       lineHeight: lineHeight
+    //     })
+    //   }
+    // })
   },
   getCenterLocation: function () {
     qqmap.getCenterLocation({
@@ -104,72 +105,72 @@ Page({
       tabIndex: e.target.dataset.tabindex
     })
   },
-  getCityList: function () {
-    var that = this;
-    qqmap.getCityList({
-      success: function (res) {
-        console.log("省区数据：", res.result[0])
-        console.log("城市数据：", res.result[1])
-        console.log("区县数据：", res.result[2])
-        that.setData({
-          cityData: res.result[1]
-        })
+  // getCityList: function () {
+  //   var that = this;
+  //   qqmap.getCityList({
+  //     success: function (res) {
+  //       console.log("省区数据：", res.result[0])
+  //       console.log("城市数据：", res.result[1])
+  //       console.log("区县数据：", res.result[2])
+  //       that.setData({
+  //         cityData: res.result[1]
+  //       })
 
-        // var province = res.result[0];
-        // var provinceData = [];
-        // for(var i = 0; i < province.length; i++){
-        //   var obj = {}
-        //   obj.code = province[i].id;
-        //   obj.name = province[i].name;
-        //   obj.py = '';
-        //   for (var j = 0; j<province[i]['pinyin'].length; j++){
-        //     obj.py += province[i]['pinyin'][j];
-        //   }
-        //   obj.type = 1;
-        //   obj.state = 1;
-        //   obj.status = 0;
-        //   provinceData.push(obj)
-        // }
-        // wx.request({
-        //   method:'post',
-        //   data: {
-        //     provinceData: provinceData
-        //   },
-        //   url: 'http://2833964ut1.qicp.vip/saveProvince',
-        //   success:function(res){
+  //       // var province = res.result[0];
+  //       // var provinceData = [];
+  //       // for(var i = 0; i < province.length; i++){
+  //       //   var obj = {}
+  //       //   obj.code = province[i].id;
+  //       //   obj.name = province[i].name;
+  //       //   obj.py = '';
+  //       //   for (var j = 0; j<province[i]['pinyin'].length; j++){
+  //       //     obj.py += province[i]['pinyin'][j];
+  //       //   }
+  //       //   obj.type = 1;
+  //       //   obj.state = 1;
+  //       //   obj.status = 0;
+  //       //   provinceData.push(obj)
+  //       // }
+  //       // wx.request({
+  //       //   method:'post',
+  //       //   data: {
+  //       //     provinceData: provinceData
+  //       //   },
+  //       //   url: 'http://2833964ut1.qicp.vip/saveProvince',
+  //       //   success:function(res){
 
-        //   }
-        // })
+  //       //   }
+  //       // })
 
-        //录入城市数据
-        // var city = res.result[1];
-        // var cityData = [];
-        // for (var i = 0; i < city.length; i++) {
-        //   var obj = {}
-        //   obj.code = city[i].id;
-        //   obj.name = city[i].name;
-        //   obj.py = '';
-        //   for (var j = 0; j < city[i]['pinyin'].length; j++) {
-        //     obj.py += city[i]['pinyin'][j];
-        //   }
-        //   obj['province_code'] = city[i].id.substr(0,3) + '000';
-        //   obj.state = 1;
-        //   obj.status = 0;
-        //   cityData.push(obj)
-        // }
-        // wx.request({
-        //   method: 'post',
-        //   data: {
-        //     cityData: cityData
-        //   },
-        //   url: 'http://2833964ut1.qicp.vip/saveCity',
-        //   success: function (res) {
+  //       //录入城市数据
+  //       // var city = res.result[1];
+  //       // var cityData = [];
+  //       // for (var i = 0; i < city.length; i++) {
+  //       //   var obj = {}
+  //       //   obj.code = city[i].id;
+  //       //   obj.name = city[i].name;
+  //       //   obj.py = '';
+  //       //   for (var j = 0; j < city[i]['pinyin'].length; j++) {
+  //       //     obj.py += city[i]['pinyin'][j];
+  //       //   }
+  //       //   obj['province_code'] = city[i].id.substr(0,3) + '000';
+  //       //   obj.state = 1;
+  //       //   obj.status = 0;
+  //       //   cityData.push(obj)
+  //       // }
+  //       // wx.request({
+  //       //   method: 'post',
+  //       //   data: {
+  //       //     cityData: cityData
+  //       //   },
+  //       //   url: 'http://2833964ut1.qicp.vip/saveCity',
+  //       //   success: function (res) {
 
-        //   }
-        // })
-      }
-    });
-  },
+  //       //   }
+  //       // })
+  //     }
+  //   });
+  // },
   //触发全部开始选择
   chStart: function () {
     this.setData({
@@ -241,7 +242,11 @@ Page({
   bindCity: function (e) {
     console.log(e);
     var cityName = e.currentTarget.dataset.city;
-    this.setData({ cityName: cityName })
+    var cityCode = e.currentTarget.dataset.code;
+    this.setData({ 
+      cityName: cityName,
+      cityCode: cityCode
+    })
     this.geocoder()
 
   },
@@ -274,10 +279,38 @@ Page({
   },
   bindViewTap: function () {
     var pageName = this.data.pageName;
-    app.globalData.location = this.data.cityName;
-    var url = "/pages/index/index";
-    wx.navigateTo({
+    app.globalData.cityName = this.data.cityName;
+    app.globalData.cityCode = this.data.cityCode;
+    var url = "/pages/home/home/home";
+    wx.switchTab({
       url: url,
+    })
+  },
+  getCityList(){
+    var that = this;
+    var url = app.globalData.requestUrl +'/http/city/listCity';
+    wx.request({
+      url: url,
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        console.log(res.data.data)
+        var cityChild = res.data.data;
+        wx.getSystemInfo({
+          success: function (res) {
+            lineHeight = (res.windowHeight - 290) / 23;
+            console.log(res.windowHeight - 160)
+            that.setData({
+              city: cityChild,
+              winHeight: res.windowHeight,
+              lineHeight: lineHeight
+            })
+          }
+        })
+      },
+      fail: function(res) {},
+      complete: function(res) {},
     })
   }
 })

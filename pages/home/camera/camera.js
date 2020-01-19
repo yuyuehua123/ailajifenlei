@@ -9,7 +9,8 @@ Page({
     isActive: true,
     tempImagePath: '',
     hasResult: false,
-    imageGarbage: null
+    imageGarbage: null,
+    lineHeight:0
   },
 
   /**
@@ -23,7 +24,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        var lineHeight = res.windowHeight;
+        that.setData({
+          lineHeight: lineHeight
+        })
+      }
+    })
   },
 
   /**
@@ -83,6 +92,8 @@ Page({
           title: '正在识别',
           mask: true
         })
+        
+        console.log(res)
         wx.getFileSystemManager().readFile({
           filePath: res.tempImagePath, //选择图片返回的相对路径
           encoding: 'base64', //编码格式
