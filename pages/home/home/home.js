@@ -1,5 +1,6 @@
 // pages/basics/home/home.js
 const app = getApp();
+const config = require('../../../utils/config.js')
 Page({
 
   /**
@@ -117,6 +118,9 @@ Page({
       }
     }
   },
+  /**
+   * 选中垃圾分类tab
+   */
   tabSelect(e) {
     var that = this;
     console.log(e.currentTarget.dataset.index);
@@ -129,18 +133,29 @@ Page({
     })
     that.getGarbageList(that.data.cityCode, that.data.garbageOneId);
   },
+
+  /**
+   * 转到城市定位页面
+   */
   toLocation(){
     let url = "/pages/location/location?location="+this.data.location;
     wx.navigateTo({
       url: url
     })
   },
+  /**
+   * 转到拍照页
+   */
   toCamera(){
     let url = "/pages/home/camera/camera";
     wx.navigateTo({
       url: url
     })
   },
+
+  /**
+   * 转到搜索页面
+   */
   toSearchGarbage(){
     let url = "/pages/home/searchGarbage/searchGarbage";
     wx.navigateTo({
@@ -152,8 +167,8 @@ Page({
    */
   getGarbageTypes(){
     var that = this;
-    var url = app.globalData.requestUrl + '/http/city/listCate';
-    console.log(app.globalData.requestUrl,that.data.cityCode)
+    var url = config.LISTCATE;
+    console.log(that.data.cityCode)
     wx.request({
       url: url,
       data: { cityCode: that.data.cityCode},
@@ -181,7 +196,7 @@ Page({
   getGarbageList(code, garbageOneId){
     console.log(code,garbageOneId)
     var that = this;
-    var url = app.globalData.requestUrl + '/http/city/listGarbage';
+    var url = config.LISTGARBAGE;
     wx.request({
       url: url,
       data: {
@@ -204,5 +219,4 @@ Page({
       complete: function(res) {},
     })
   },
-
 })

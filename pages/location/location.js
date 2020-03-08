@@ -5,6 +5,7 @@ var lineHeight = 0;
 var endWords = "";
 var isNum;
 var QQMapWX = require('../../libs/qqmap-wx-jssdk1.0/qqmap-wx-jssdk.js');
+const config = require('../../utils/config.js')
 var qqmap = new QQMapWX({
   //在腾讯地图开放平台申请密钥 http://lbs.qq.com/mykey.html
   key: '24MBZ-YUGK6-ONHSU-ESCKC-MAQ3F-RPFXA'
@@ -288,7 +289,7 @@ Page({
   },
   getCityList(){
     var that = this;
-    var url = app.globalData.requestUrl +'/http/city/listCity';
+    var url = config.LISTCITY;
     wx.request({
       url: url,
       method: 'GET',
